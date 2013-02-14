@@ -5,12 +5,6 @@ import com.google.android.maps.GeoPoint;
 public class Segment {
     /** Points in this segment. **/
     private GeoPoint start;
-    
- 
-
-
-
-
 	/** Turn instruction to reach next segment. **/
     private String instruction;
     /** Length of segment. **/

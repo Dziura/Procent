@@ -11,7 +11,7 @@ import com.google.android.maps.GeoPoint;
 
 public class NearPlace {
 	// All static variables
-	static final String URL = "http://dl.dropbox.com/u/20236503/test.xml";
+	static final String URL = "http://dl.dropbox.com/u/20236503/Places.xml";
 	// XML node keys
 	static final String KEY_ITEM = "Place"; // parent node
 	static final String KEY_NAME = "Name";
@@ -22,7 +22,7 @@ public class NearPlace {
 	static final String KEY_CT = "commonTo";
 	static final String KEY_WF = "weekFrom";
 	static final String KEY_WT = "weekTo";
-	private Place near;
+	private Place nearest;
 	private double latitude;
 	private double longitude;
 
@@ -39,10 +39,9 @@ public class NearPlace {
 		String xml = parser.getXmlFromUrl(URL); // getting XML
 		Document doc = parser.getDomElement(xml); // getting DOM element
 		NodeList nl = doc.getElementsByTagName(KEY_ITEM);
-		near = new Place("test", "test", 34.2323, 17.040905, 7.00, 20.00, 9.00,
+		nearest = new Place("test", "test", 34.2323, 17.040905, 7.00, 20.00, 9.00,
 				20.00);
 
-		// looping through all item nodes <item>
 		for (int i = 0; i < nl.getLength(); i++) {
 			Element e = (Element) nl.item(i);
 			String name = parser.getValue(e, KEY_NAME);
@@ -58,13 +57,13 @@ public class NearPlace {
 			tmp = distance(latitude, longitude, lan, lon);
 			if (tmp < min) {
 				min = tmp;
-				near = new Place(name, street, lan, lon, cf, ct, wf, wt);
+				nearest = new Place(name, street, lan, lon, cf, ct, wf, wt);
 			}
 
 			System.out.println(min);
 		}
 
-		return near;
+		return nearest;
 
 	}
 

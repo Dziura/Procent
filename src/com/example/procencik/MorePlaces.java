@@ -25,7 +25,7 @@ import android.widget.TextView;
 public class MorePlaces extends ListActivity {
 
 	// All static variables
-	static final String URL = "http://dl.dropbox.com/u/20236503/test.xml";
+	static final String URL = "http://dl.dropbox.com/u/20236503/Places.xml";
 	// XML node keys
 	static final String KEY_ITEM = "Place"; // parent node
 	static final String KEY_NAME = "Name";
@@ -73,6 +73,7 @@ public class MorePlaces extends ListActivity {
 				LocationManager.GPS_PROVIDER).getLatitude();
 		longitude = locationManager.getLastKnownLocation(
 				LocationManager.GPS_PROVIDER).getLongitude();
+		
 
 		XmParser parser = new XmParser();
 		String xml = parser.getXmlFromUrl(URL); // getting XML

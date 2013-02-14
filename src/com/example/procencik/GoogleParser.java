@@ -19,16 +19,16 @@ public class GoogleParser extends XMLParser implements Parser {
 	/** Distance covered. **/
 	private int distance;
 
+	  /**
+     * Public constructor.
+     * 
+     * @param feedUrl String is url to parse
+     */
 	public GoogleParser(String feedUrl) {
 		super(feedUrl);
 	}
 
-	/**
-	 * Parses a url pointing to a Google JSON object to a Route object.
-	 * 
-	 * @return a Route object based on the JSON object.
-	 */
-
+	//TODO delete this shit
 	public int dist() {
 		int distance = 0;
 		try {
@@ -45,6 +45,11 @@ public class GoogleParser extends XMLParser implements Parser {
 		return distance;
 	}
 
+	/**
+	 * Parses a url pointing to a Google JSON object to a Route object.
+	 * 
+	 * @return a Route object based on the JSON object.
+	 */
 	public Route parse() {
 		// turn the stream into a string
 		final String result = convertStreamToString(this.getInputStream());

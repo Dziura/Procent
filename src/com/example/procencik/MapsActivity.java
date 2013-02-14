@@ -47,7 +47,7 @@ public class MapsActivity extends MapActivity {
 	private Button me;
 	private Button ref;
 	private Place test;
-	private NearPlace near;
+	private NearPlace nearest;
 	private Route route;
 	private Marker marker;
 	private Drawable drawable;
@@ -90,6 +90,8 @@ public class MapsActivity extends MapActivity {
 		public void onLocationChanged(Location location) {
 			latitude = myLocationOverlay.getMyLocation().getLatitudeE6() / 1E6;
 			longitude = myLocationOverlay.getMyLocation().getLongitudeE6() / 1E6;
+			
+			
 			System.out.println(latitude + " " + longitude);
 
 			Bundle bundle = getIntent().getExtras();
@@ -208,8 +210,8 @@ public class MapsActivity extends MapActivity {
 			boolean change = bundle.getBoolean("change");
 
 			if (change) {
-				near = new NearPlace(latitude, longitude);
-				test = near.findNear();
+				nearest = new NearPlace(latitude, longitude);
+				test = nearest.findNear();
 				System.out.println(test.toString());
 
 				route = directions(new GeoPoint((int) (latitude * 1E6),
@@ -300,8 +302,8 @@ public class MapsActivity extends MapActivity {
 				boolean change = bundle.getBoolean("change");
 
 				if (change) {
-					near = new NearPlace(latitude, longitude);
-					test = near.findNear();
+					nearest = new NearPlace(latitude, longitude);
+					test = nearest.findNear();
 					System.out.println(test.toString());
 
 					route = directions(new GeoPoint((int) (latitude * 1E6),

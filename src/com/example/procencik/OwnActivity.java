@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
+
 public class OwnActivity extends ListActivity {
 
 	final Context context = this;
@@ -45,14 +46,12 @@ public class OwnActivity extends ListActivity {
 			@Override
 			public void onClick(View arg0) {
 
-				// get prompts.xml view
 				LayoutInflater li = LayoutInflater.from(context);
 				View promptsView = li.inflate(R.layout.mydialog, null);
 
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 						context);
 
-				// set prompts.xml to alertdialog builder
 				alertDialogBuilder.setView(promptsView);
 
 				final EditText name = (EditText) promptsView
@@ -109,7 +108,7 @@ public class OwnActivity extends ListActivity {
 
 			}
 		});
-		
+
 		ListView lv = getListView();
 		// listening to single listitem click
 		lv.setOnItemClickListener(new OnItemClickListener() {
@@ -120,36 +119,36 @@ public class OwnActivity extends ListActivity {
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 						context);
 				alertDialogBuilder
-				.setCancelable(false)
-				.setPositiveButton("Usun",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int id) {
-								menuItems.remove(position);
-								setListAdapter(adapter);
-								// get user input and set it to result
-								// edit text
+						.setCancelable(false)
+						.setPositiveButton("Usun",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int id) {
+										menuItems.remove(position);
+										setListAdapter(adapter);
+										// get user input and set it to result
+										// edit text
 
-							}
-						})
-				.setNegativeButton("Anuluj",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int id) {
-								dialog.cancel();
-							}
-						});
+									}
+								})
+						.setNegativeButton("Anuluj",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int id) {
+										dialog.cancel();
+									}
+								});
 
-		// create alert dialog
-		AlertDialog alertDialog = alertDialogBuilder.create();
+				// create alert dialog
+				AlertDialog alertDialog = alertDialogBuilder.create();
 
-		// show it
-		alertDialog.show();
+				// show it
+				alertDialog.show();
 
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
