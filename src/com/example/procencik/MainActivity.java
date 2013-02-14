@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 		red.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				
+				//lol
 				String networkService = Context.CONNECTIVITY_SERVICE;
 				locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 				connManager = (ConnectivityManager) getSystemService(networkService);
