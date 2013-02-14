@@ -28,7 +28,6 @@ public class XmParser {
         String xml = null;
  
         try {
-            // defaultHttpClient
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost httpPost = new HttpPost(url);
  
@@ -43,7 +42,6 @@ public class XmParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // return XML
         return xml;
     }
 	
@@ -68,7 +66,6 @@ public class XmParser {
               
                 return null;
             }
-                // return DOM
             return doc;
     }
 	public String getValue(Element item, String str) {

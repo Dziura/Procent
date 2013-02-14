@@ -32,7 +32,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
-
+//TODO posprzataj ten burdel i wywal double-trips reapaty...
 public class MapsActivity extends MapActivity {
 	private MapView mapView;
 	private CheckBox cbSatellite;
@@ -96,7 +96,6 @@ public class MapsActivity extends MapActivity {
 
 			Bundle bundle = getIntent().getExtras();
 
-			// getting attached intent data
 			boolean change = bundle.getBoolean("change");
 
 			if (change) {
@@ -405,6 +404,5 @@ public class MapsActivity extends MapActivity {
 		super.onStop();
 	}
 
-	// ////////////////////////////////////////////////////////
 
 }

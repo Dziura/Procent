@@ -100,17 +100,13 @@ public class OwnActivity extends ListActivity {
 									}
 								});
 
-				// create alert dialog
 				AlertDialog alertDialog = alertDialogBuilder.create();
-
-				// show it
 				alertDialog.show();
 
 			}
 		});
 
 		ListView lv = getListView();
-		// listening to single listitem click
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -126,8 +122,6 @@ public class OwnActivity extends ListActivity {
 											int id) {
 										menuItems.remove(position);
 										setListAdapter(adapter);
-										// get user input and set it to result
-										// edit text
 
 									}
 								})
@@ -139,10 +133,7 @@ public class OwnActivity extends ListActivity {
 									}
 								});
 
-				// create alert dialog
 				AlertDialog alertDialog = alertDialogBuilder.create();
-
-				// show it
 				alertDialog.show();
 
 			}
@@ -151,7 +142,6 @@ public class OwnActivity extends ListActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_own, menu);
 		menu.add("Pokaz na mapie");
 		return true;

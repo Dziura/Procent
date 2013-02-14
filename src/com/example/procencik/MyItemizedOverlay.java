@@ -8,17 +8,9 @@ import com.google.android.maps.OverlayItem;
  
 import java.util.ArrayList;
  
-/**
- * Description
- *
- * @author : kazy
- *         Date: 3/23/12
- */
 public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
     private ArrayList< OverlayItem > mOverlays = new ArrayList< OverlayItem >();
     Context mContext;
- 
- 
  
     public MyItemizedOverlay(Drawable marker) {
         super(boundCenterBottom(marker));

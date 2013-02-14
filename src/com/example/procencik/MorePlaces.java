@@ -7,13 +7,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -24,7 +22,6 @@ import android.widget.TextView;
 
 public class MorePlaces extends ListActivity {
 
-	// All static variables
 	static final String URL = "http://dl.dropbox.com/u/20236503/Places.xml";
 	// XML node keys
 	static final String KEY_ITEM = "Place"; // parent node
@@ -36,11 +33,11 @@ public class MorePlaces extends ListActivity {
 	static final String KEY_CT = "commonTo";
 	static final String KEY_WF = "weekFrom";
 	static final String KEY_WT = "weekTo";
-	Place near;
-	LocationManager locationManager;
+	private Place near;
+	private LocationManager locationManager;
 	double latitude;
 	double longitude;
-	ArrayList<HashMap<String, String>> menuItems;
+	private ArrayList<HashMap<String, String>> menuItems;
 	double min;
 
 	private double deg2rad(double deg) {
@@ -73,7 +70,6 @@ public class MorePlaces extends ListActivity {
 				LocationManager.GPS_PROVIDER).getLatitude();
 		longitude = locationManager.getLastKnownLocation(
 				LocationManager.GPS_PROVIDER).getLongitude();
-		
 
 		XmParser parser = new XmParser();
 		String xml = parser.getXmlFromUrl(URL); // getting XML
@@ -121,7 +117,7 @@ public class MorePlaces extends ListActivity {
 			} else
 				break;
 		}
-		// Adding menuItems to ListView
+
 		ListAdapter adapter = new SimpleAdapter(this, menuItems,
 				R.layout.element, new String[] { KEY_NAME, KEY_STREET, "time",
 						"distance", KEY_LAT, KEY_LON }, new int[] {
@@ -129,28 +125,26 @@ public class MorePlaces extends ListActivity {
 						R.id.textView4, R.id.lat, R.id.lon });
 
 		setListAdapter(adapter);
-
-		// selecting single ListView item
 		ListView lv = getListView();
-		// listening to single listitem click
+
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				boolean change = false;
-				// getting values from selected ListItem
+
 				String lat = ((TextView) view.findViewById(R.id.lat)).getText()
 						.toString();
 				String lon = ((TextView) view.findViewById(R.id.lon)).getText()
 						.toString();
-				String name = ((TextView) view.findViewById(R.id.textView1)).getText()
-						.toString();
-				String street = ((TextView) view.findViewById(R.id.textView2)).getText()
-						.toString();
-				String time = ((TextView) view.findViewById(R.id.textView3)).getText()
-						.toString();
-				// Starting new intent
+				String name = ((TextView) view.findViewById(R.id.textView1))
+						.getText().toString();
+				String street = ((TextView) view.findViewById(R.id.textView2))
+						.getText().toString();
+				String time = ((TextView) view.findViewById(R.id.textView3))
+						.getText().toString();
+
 				Intent intent = new Intent(getApplicationContext(),
 						MapsActivity.class);
 				intent.putExtra(KEY_LAT, lat);

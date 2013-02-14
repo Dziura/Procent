@@ -1,5 +1,5 @@
 package com.example.procencik;
-
+//TODO to delete
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -10,7 +10,6 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 
 class Marker extends Overlay {
-
 	private GeoPoint p;
 
 	Marker(double latitude, double longitude) {
@@ -23,11 +22,9 @@ class Marker extends Overlay {
 			long when) {
 		super.draw(canvas, mapView, shadow);
 
-		// ---translate the GeoPoint to screen pixels---
 		Point screenPts = new Point();
 		mapView.getProjection().toPixels(p, screenPts);
 
-		// ---add the marker---
 		Bitmap marker = BitmapFactory.decodeResource(mapView.getContext()
 				.getResources(), R.drawable.bar);
 		canvas.drawBitmap(marker, screenPts.x, screenPts.y, null);

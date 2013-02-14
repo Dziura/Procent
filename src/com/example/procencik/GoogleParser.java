@@ -85,12 +85,7 @@ public class GoogleParser extends XMLParser implements Parser {
 						.getString(0));
 			}
 
-			/*
-			 * Loop through the steps, creating a segment for each one and
-			 * decoding any polylines found as we go to add to the route
-			 * object's map array. Using an explicit for loop because it is
-			 * faster!
-			 */
+		
 			for (int i = 0; i < numSteps; i++) {
 				// Get the individual step
 				final JSONObject step = steps.getJSONObject(i);
@@ -110,8 +105,7 @@ public class GoogleParser extends XMLParser implements Parser {
 				// Strip html from google directions and set as turn instruction
 				segment.setInstruction(step.getString("html_instructions")
 						.replaceAll("<(.*?)*>", ""));
-				// Retrieve & decode this segment's polyline and add it to the
-				// route.
+				
 				route.addPoints(decodePolyLine(step.getJSONObject("polyline")
 						.getString("points")));
 				// Push a copy of the segment to the route

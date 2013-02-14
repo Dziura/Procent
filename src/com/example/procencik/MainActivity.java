@@ -17,10 +17,10 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	ImageButton red;
-	Context context;
-	Button more;
-	Button my;
+	private ImageButton red;
+	private Context context;
+	private Button more;
+	private Button my;
 	LocationManager locationManager;
 	private ConnectivityManager connManager;
 
@@ -33,30 +33,28 @@ public class MainActivity extends Activity {
 
 		red = (ImageButton) findViewById(R.id.redButton);
 		more = (Button) findViewById(R.id.Szukaj);
-		my = (Button) findViewById(R.id.my);
 
+		my = (Button) findViewById(R.id.my);
 		my.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				
+
 				Intent intent = new Intent(context, OwnActivity.class);
 				startActivity(intent);
 			}
 		});
-		
+
 		more.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				
+
 				Intent intent = new Intent(context, MorePlaces.class);
 				startActivity(intent);
 			}
 		});
-		
-		red.setOnClickListener(new OnClickListener() {
 
+		red.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				
 				String networkService = Context.CONNECTIVITY_SERVICE;
 				locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 				connManager = (ConnectivityManager) getSystemService(networkService);
@@ -72,7 +70,7 @@ public class MainActivity extends Activity {
 					Intent intent = new Intent(context, MapsActivity.class);
 					intent.putExtra("change", change);
 					Toast.makeText(context, "Szukam...", Toast.LENGTH_SHORT)
-					.show();
+							.show();
 					startActivity(intent);
 
 				} else {
